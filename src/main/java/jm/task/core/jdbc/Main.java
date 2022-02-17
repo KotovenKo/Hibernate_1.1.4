@@ -105,7 +105,7 @@ public class Main {
 
 
             //Delete user with ID
-            statement.execute("delete from katausers where id=1");
+            statement.execute("delete from katausers where id=1");``
 
 
 
