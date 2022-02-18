@@ -84,9 +84,12 @@ public class UserDaoJDBCImpl implements UserDao {
             Statement statement = Util.getConnection().createStatement();
             ResultSet resultSettoList = statement.executeQuery("select * from katausers");
             while (resultSettoList.next()) {
-                userList.add(new User(resultSettoList.getString("name"),
-                        resultSettoList.getString("secondName"),
-                        (byte) resultSettoList.getInt("age")));
+                User user = new User();
+                user.setId(resultSettoList.getLong("ID"));
+                user.setName(resultSettoList.getString("name"));
+                user.setLastName(resultSettoList.getString("secondName"));
+                user.setAge(resultSettoList.getByte("age"));
+                userList.add(user);
             }
         } catch (SQLException e) {
             System.out.println("Ошибка сохранения всех Юзеров");
