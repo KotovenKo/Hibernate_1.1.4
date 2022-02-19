@@ -8,22 +8,22 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        UserDaoJDBCImpl userDaoJDBC = new UserDaoJDBCImpl();
+        UserServiceImpl userService = new UserServiceImpl();
 
-        userDaoJDBC.createUsersTable();
+        userService.createUsersTable();
 
 
-        userDaoJDBC.saveUser("Chuck", "Norris", (byte) 45);
-        userDaoJDBC.saveUser("Jack", "Sparrow", (byte) 30);
-        userDaoJDBC.saveUser("Bruce", "Lee", (byte) 45);
-        userDaoJDBC.saveUser("Janclod", "Vandam", (byte) 30);
+        userService.saveUser("Chuck", "Norris", (byte) 45);
+        userService.saveUser("Jack", "Sparrow", (byte) 30);
+        userService.saveUser("Bruce", "Lee", (byte) 45);
+        userService.saveUser("Janclod", "Vandam", (byte) 30);
 
-       List <User> users = userDaoJDBC.getAllUsers();
+       List <User> users = userService.getAllUsers();
 
         for (User u : users) {
             System.out.println(u);
         }
-        userDaoJDBC.cleanUsersTable();
-        userDaoJDBC.dropUsersTable();
+        userService.cleanUsersTable();
+        userService.dropUsersTable();
     }
 }
