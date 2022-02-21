@@ -24,7 +24,7 @@ public class UserDaoJDBCImpl implements UserDao {
                     "age SMALLINT NOT NULL , " +
                     "PRIMARY KEY (id))");
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка создания таблицы");
             e.printStackTrace();
         }
@@ -34,7 +34,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         try (Statement statement = Util.getConnection().createStatement()) {
             statement.execute("DROP TABLE IF EXISTS katausers");
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка удаления таблицы");
             e.printStackTrace();
         }
@@ -50,7 +50,7 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.setInt(3, age);
             preparedStatement.execute();
             System.out.printf("User с именем %s добавлен в базу данных\n", name);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка добавления Юзера в БД");
             e.printStackTrace();
         }
@@ -69,7 +69,7 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         try (PreparedStatement preparedStatement = Util.getConnection().prepareStatement("delete from katausers where id = ?")) {
             preparedStatement.setLong(1, id);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка удаления юзера по ID");
             e.printStackTrace();
         }
@@ -88,7 +88,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 user.setAge(resultSettoList.getByte("age"));
                 userList.add(user);
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка сохранения всех Юзеров");
             e.printStackTrace();
         }
@@ -101,7 +101,7 @@ public class UserDaoJDBCImpl implements UserDao {
             // TABLE CREATION
             statement.execute("TRUNCATE TABLE katausers");
 
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Ошибка очистки таблицы");
             e.printStackTrace();
         }

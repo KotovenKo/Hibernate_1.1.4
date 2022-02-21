@@ -1,5 +1,7 @@
 package jm.task.core.jdbc.util;
 
+import javax.sql.DataSource;
+
 import java.sql.*;
 
 public class Util {
@@ -12,7 +14,8 @@ public class Util {
 
     public static Connection connection;
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
         connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         if (!connection.isClosed()) {
             System.out.println("Соединение установлено!!!");
