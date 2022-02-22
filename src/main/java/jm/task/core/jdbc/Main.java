@@ -20,8 +20,8 @@ public class Main {
         userService.saveUser("Brad", "Pitt" , (byte)34);
         userService.saveUser("Silvester", "Stallone" , (byte)45);
         userService.saveUser("Arnold", "Schwarzenegger" , (byte)25);
-        List<User> user = userService.getAllUsers();
-        for(User u : user){
+        List<User> userFromTable = userService.getAllUsers();
+        for(User u : userFromTable){
             System.out.println(u);
         }
         userService.cleanUsersTable();
