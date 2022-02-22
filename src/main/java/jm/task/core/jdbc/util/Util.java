@@ -41,7 +41,7 @@ public class Util {
                 properties.put(Environment.PASS, PASSWORD);
                 properties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
-                properties.put(Environment.HBM2DDL_AUTO, "none");
+                properties.put(Environment.HBM2DDL_AUTO, "none"); // Самоятоятельно создает таблицу "create"
                 properties.put(Environment.SHOW_SQL, "true");
                 properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
